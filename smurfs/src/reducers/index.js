@@ -48,7 +48,7 @@ export const smurfReducer = (state = initialState, action) => {
       case READ_SMURFS_SUCCESS:
       return {
         ...state,
-        smurfs: [...state.smurfs, ...action.payload],
+        smurfs: action.payload,
         fetchingSmurfs: false,
         error: null
       }
@@ -69,7 +69,7 @@ export const smurfReducer = (state = initialState, action) => {
       case CREATE_SMURFS_SUCCESS:
       return {
         ...state,
-        smurfs: [...state.smurfs, ...action.payload],
+        smurfs: action.payload,
         fetchingSmurfs: false,
       }
       case CREATE_SMURFS_FAIL:
