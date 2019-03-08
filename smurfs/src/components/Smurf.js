@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Smurf extends Component {
   render() {
     return (
-      <div>
+      <div className="smurf">
         {this.props.smurf.name}
       </div>
     )

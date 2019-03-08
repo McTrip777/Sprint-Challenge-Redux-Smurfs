@@ -39,7 +39,7 @@ export class SmurfForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="SmurfForm">
         <form onSubmit={this.submitSmurf}>
           <input
             type="text"
