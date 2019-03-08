@@ -4,26 +4,38 @@ import { connect } from "react-redux";
 
 export class SmurfForm extends Component {
     state={
-        smurfName: '',
-        smurfAge: '',
-        smurfHeight:'',
+        smurf:{
+            name: '',
+            age: '',
+            height:'',
+        }
+    }
+
+    submitSmurf = e => {
+        e.preventDefault();
+        this.props.postSmurfs(this.state.smurf);
+        this.setState({
+          smurf:{
+              name: '',
+              age: '',
+              height:''
+          }
+      })
     }
 
     changeHandler = e => {
-        this.setState({
-          [e.target.name]: e.target.value
+        e.persist();
+        this.setState(prevState => {
+            return {
+                smurf:{
+                    ...prevState.smurf,
+                  [e.target.name]: e.target.value
+                }
+            }
         });
-      };
+    };
 
-      submitSmurf = e => {
-          e.preventDefault();
-          this.props.postSmurfs(this.state);
-          this.setState({
-            smurfName: '',
-            smurfAge: '',
-            smurfHeight:''
-        })
-      }
+     
 
   render() {
     return (
@@ -31,25 +43,25 @@ export class SmurfForm extends Component {
         <form onSubmit={this.submitSmurf}>
           <input
             type="text"
-            name="smurfName"
+            name="name"
             placeholder="Smurf Name"
-            value={this.state.smurfName}
+            value={this.state.smurf.name}
             onChange={this.changeHandler}
             required
           />
           <input
             type="number"
-            name="smurfAge"
+            name="age"
             placeholder="Smurf Age"
-            value={this.state.smurfAge}
+            value={this.state.smurf.age}
             onChange={this.changeHandler}
             required
           />
           <input
             type="text"
-            name="smurfHeight"
+            name="height"
             placeholder="Smurf Height"
-            value={this.state.smurfHeight}
+            value={this.state.smurf.height}
             onChange={this.changeHandler}
             required
           />
