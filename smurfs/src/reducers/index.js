@@ -5,9 +5,9 @@ import {
   READ_SMURFS_START,
   READ_SMURFS_SUCCESS,
   READ_SMURFS_FAIL,
-  // CREATE_SMURFS_START,
-  // CREATE_SMURFS_SUCCESS,
-  // CREATE_SMURFS_FAIL,
+  CREATE_SMURFS_START,
+  CREATE_SMURFS_SUCCESS,
+  CREATE_SMURFS_FAIL,
 } from "../actions";
 
 /*
@@ -53,6 +53,26 @@ export const smurfReducer = (state = initialState, action) => {
         error: null
       }
       case READ_SMURFS_FAIL:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: action.payload,
+      }
+
+
+      case CREATE_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: null
+      }
+      case CREATE_SMURFS_SUCCESS:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, ...action.payload],
+        fetchingSmurfs: false,
+      }
+      case CREATE_SMURFS_FAIL:
       return {
         ...state,
         fetchingSmurfs: false,

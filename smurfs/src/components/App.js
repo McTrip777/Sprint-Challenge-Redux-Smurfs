@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from '../nav/NavBar';
 import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
+import { Route } from 'react-router-dom';
 
 /*
  to wire this component up you're going to need a few things.
@@ -13,8 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar/>
-        <SmurfList/>
+        <NavBar />
+        <Route exact path='/' component={SmurfList}/>
+        <Route path='/smurf-form' component={SmurfForm} />
       </div>
     );
   }

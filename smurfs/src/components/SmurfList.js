@@ -14,8 +14,8 @@ render(){
   return (
     <div>
      <h2> im a smurf list</h2>
-     {this.props.smurfs.map(smurf => (
-         <Smurf key={smurf.id} smurf={smurf} />
+     {this.props.smurfs.map((smurf,index) => (
+         <Smurf key={index + 1} smurf={smurf} />
      ))}
     </div>
   )
