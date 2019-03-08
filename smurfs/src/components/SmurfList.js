@@ -15,8 +15,8 @@ render(){
     <div className="smurfs">
      <h2> SMURF VILLAGE!!! </h2>
      <div className='smurfContainer'>
-     {this.props.smurfs.map((smurf,index) => (
-         <Smurf key={index + 1} smurf={smurf} />
+     {this.props.smurfs.map(smurf => (
+         <Smurf smurf={smurf} />
      ))}
     </div></div>
   )

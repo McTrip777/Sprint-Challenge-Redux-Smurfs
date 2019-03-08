@@ -4,35 +4,24 @@ import { connect } from "react-redux";
 
 export class SmurfForm extends Component {
     state={
-        smurf:{
             name: '',
             age: '',
             height:'',
-        }
     }
 
     submitSmurf = e => {
         e.preventDefault();
-        this.props.postSmurfs(this.state.smurf);
+        this.props.postSmurfs(this.state);
         this.setState({
-          smurf:{
               name: '',
               age: '',
               height:''
-          }
       })
     }
 
     changeHandler = e => {
         e.persist();
-        this.setState(prevState => {
-            return {
-                smurf:{
-                    ...prevState.smurf,
-                  [e.target.name]: e.target.value
-                }
-            }
-        });
+        this.setState({[e.target.name]: e.target.value})
     };
 
      
@@ -45,7 +34,7 @@ export class SmurfForm extends Component {
             type="text"
             name="name"
             placeholder="Smurf Name"
-            value={this.state.smurf.name}
+            value={this.state.name}
             onChange={this.changeHandler}
             required
           />
@@ -53,7 +42,7 @@ export class SmurfForm extends Component {
             type="number"
             name="age"
             placeholder="Smurf Age"
-            value={this.state.smurf.age}
+            value={this.state.age}
             onChange={this.changeHandler}
             required
           />
@@ -61,7 +50,7 @@ export class SmurfForm extends Component {
             type="text"
             name="height"
             placeholder="Smurf Height"
-            value={this.state.smurf.height}
+            value={this.state.height}
             onChange={this.changeHandler}
             required
           />

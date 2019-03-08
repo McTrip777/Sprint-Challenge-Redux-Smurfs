@@ -15,6 +15,7 @@
 import axios from "axios";
 
 const url = 'http://localhost:3333/smurfs'
+
 // READ
 export const READ_SMURFS_START = 'READ_SMURFS_START';
 export const READ_SMURFS_SUCCESS = 'READ_SMURFS_SUCCESS';
@@ -40,4 +41,16 @@ export const postSmurfs = newSmurf => dispatch => {
     .post(url, newSmurf)
     .then(res => dispatch({type: CREATE_SMURFS_SUCCESS, payload: res.data}))
     .catch(err => dispatch({type: CREATE_SMURFS_FAIL, payload: err}))
+}
+
+export const DELETE_SMURFS_START = 'DELETE_SMURFS_START';
+export const DELETE_SMURFS_SUCCESS = 'DELETE_SMURFS_SUCCESS';
+export const DELETE_SMURFS_FAIL = 'DELETE_SMURFS_FAIL';
+
+export const deleteSmurfs = id => dispatch => {
+  dispatch({ type: DELETE_SMURFS_START})
+  axios
+    .delete(`${url}/${id}`)
+    .then(() => dispatch({type: DELETE_SMURFS_SUCCESS, payload: id}))
+    .catch(err => dispatch({type: DELETE_SMURFS_FAIL, payload: err}))
 }
